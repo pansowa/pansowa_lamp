@@ -1,0 +1,239 @@
+::-webkit-scrollbar { 
+	width: 7px;height: 7px;
+}
+::-webkit-scrollbar-track {
+	background: rgba(0, 0, 0, 0.1);
+}
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+}
+.container {
+	position: relative;
+	width: $addWidth;
+	height: $addHeight;
+	background-color: $bgcolor;
+	overflow: hidden;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	&:after{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		z-index: 999;
+		content: '';
+		display: block;
+		width: $addWidth;
+		height: $addHeight;
+		-webkit-box-shadow: inset 0px 0px 0px 1px #1b8594;
+		-moz-box-shadow:    inset 0px 0px 0px 1px #1b8594;
+		box-shadow:         inset 0px 0px 0px 1px #1b8594;
+	}
+}
+a img { border: 0px; }
+.nota {
+	font-family: arial;
+	color: #000;
+	background-color: #fff;
+	font-size: 10px;
+	width: $addWidth - 2; 
+	z-index: 2;
+	position: absolute;
+	padding: 10px 20px 10px 10px;
+	box-sizing: border-box;
+	z-index: 9000;
+	left: 1px;
+	bottom: 1px;
+	font-size: 	10px;
+}
+.nota-btn {
+	font-family: arial;
+	color: #fff;
+	font-size: 10px;
+	cursor: pointer;
+	z-index: 8000;
+	line-height:0.9;
+}
+.logo{
+	right: 1px;top: 1px;
+}
+.btn {
+	z-index: 303;
+}
+.nota-btn,.btn,.logo,#head,#benefit,#kv,#scene1,#pan,#lewa,#prawa,#cialo,#glowa,
+#scene2,#fala,#fala2,#puls {
+	position: absolute;
+	transition: 1s all;
+}  
+#kv-ct,#scene1-ct,#scene2-ct {
+	div { position: absolute; }
+}
+#kv,#scene2 { 
+	display:none; 
+}
+#scene2 {
+	z-index:500;
+}
+#scene2-ct {
+	$pulsing:0.9s;
+	#fala2 {
+		z-index:444;
+		@include anim($pulsing,0s,infinite,ease-in-out,true,50%,
+			-10px,
+			-10px,
+			-10px,
+				-61px,
+				-61px,
+				-61px,
+			32deg,32deg,32deg,
+			1,1.6,1,
+			1,0.1,1);
+	}
+	#puls {
+		background:#000;
+		width:33px;height:33px;
+		border-radius:20px;
+		//@include lt(407,68); 
+
+		@include anim($pulsing,0s,infinite,ease-out,true,50%,
+			91px,
+			91px,
+			91px,
+				91px,
+				91px,
+				91px,
+			0deg,10deg,0deg,
+			1,2.5,1,
+			1,0.8,1);
+
+		z-index:125;
+	}
+}	
+#scene1-ct {
+	#glosnik {
+		@include anim(0.7s,0s,infinite,ease-in-out,true,50%,200px,200px,200px,260px,267px,260px,0deg,-7deg,0deg);
+	}
+	#fala {
+		@include anim(1s,0s,infinite,ease-in-out,true,50%,
+			120px,
+			60px,
+			120px,
+				200px,
+				200px,
+				200px,
+			0deg,10deg,0deg,
+			0.2,1,0.2,
+			1,0.1,1);
+	}
+	#pan {
+		@include lt(300,1); 
+		#cialo {
+			z-index:10;
+			@include anim(1.5s,0s,infinite,ease-in,true,50%,
+				110px,
+				110px,
+				110px,
+					122px,
+					122px,
+					122px,
+				0deg,2deg,0deg);			
+		}
+		#prawa {
+			z-index:9;
+			@include anim(1.5s,0s,infinite,ease-in,true,50%,
+				8px,
+				8px,
+				8px,
+					117px,
+					100px,
+					117px,
+				0deg,20deg,0deg);			
+		}
+		#lewa { 
+			z-index:11;
+			@include anim(1.5s,0s,infinite,ease-in,true,50%,
+				180px,
+				180px,
+				180px,
+					35px,
+					35px,
+					35px,
+				0deg,-5deg,0deg);	
+		}
+		#glowa {
+			z-index:12;
+			@include anim(0.7s,0s,infinite,ease-in,true,50%,
+				120px,
+				120px,
+				120px,
+					0,
+					7px,
+					0,
+				0deg,0deg,0deg);
+		}
+
+		#bars {
+		    height: 30px;
+		    position: absolute;
+		    width: 40px;
+		    @include lt(141,155);
+		    z-index:12;
+		}
+
+		.bar {
+		   	background: #be4b95;
+		    bottom: 1px;
+		    height: 3px;
+		    position: absolute;
+		    width: 3px;      
+		    animation: sound 0ms -800ms linear infinite alternate;
+		}
+
+		@keyframes sound {
+		    0% {
+		       opacity: .35;
+		        height: 3px; 
+		    }
+		    100% {
+		        opacity: 1;       
+		        height: 28px;        
+		    }
+		}
+
+		.bar:nth-child(1)  { left: 1px; animation-duration: 474ms; }
+		.bar:nth-child(2)  { left: 5px; animation-duration: 433ms; }
+		.bar:nth-child(3)  { left: 9px; animation-duration: 407ms; }
+		.bar:nth-child(4)  { left: 13px; animation-duration: 458ms; }
+		.bar:nth-child(5)  { left: 17px; animation-duration: 400ms; }
+		.bar:nth-child(6)  { left: 21px; animation-duration: 427ms; }
+		.bar:nth-child(7)  { left: 25px; animation-duration: 441ms; }
+		.bar:nth-child(8)  { left: 29px; animation-duration: 419ms; }
+		.bar:nth-child(9)  { left: 33px; animation-duration: 487ms; }
+	}
+}
+/* 
+		$speed: 1s,
+		$delay: 0s, 
+		$loop: infinite, // ilość powtórzeń 1/2/3...infinite
+		$timing: ease, // ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)
+		$class: 'true', // jeśli true div musi posiadać klasę .animate
+		$centerPoint: '50%',
+		
+		$startX: 0px, 
+		$centerX: 0px, 
+		$endX: 0px, 
+		
+		$startY: 0px, 
+		$centerY: 0px, 
+		$endY: 0px, 
+		
+		$startRotate: 0deg, 
+		$centerRotate: 0deg, 
+		$endRotate: 0deg, 
+
+		$startScale: 1,
+		$centerScale: 1,
+		$endScale: 1,
+		
+		$startOpacity: 1, 
+		$centerOpacity: 1, 
+		$endOpacity: 1 */

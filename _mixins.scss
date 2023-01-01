@@ -1,0 +1,155 @@
+.create { display:block !important; }
+.kill	{ display:none  !important; }
+
+@mixin lt($l:0,$t:0){ left:0px + $l;top:0px + $t;}
+@mixin lb($l:0,$b:0){ left:0px + $l;bottom:0px + $b;}
+@mixin rb($r:0,$b:0){ right:0px + $r;bottom:0px + $b; }
+@mixin rt($r:0,$t:0){ right:0px + $r;top:0px + $t; }
+
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+@mixin scale( $value ){
+	-ms-transform: scale( $value / 100);
+	-webkit-transform: perspective(1px) scale( $value / 100);
+	transform: perspective(1px) scale( $value / 100);
+	-webkit-transform-origin: 0 0;
+	transform-origin: 0 0;
+}
+
+@mixin transform($slide:"", $offset:200px, $x:0, $y:0, $rotate:0deg) { 
+
+	@if $slide == 'left'{ 
+		-webkit-transform: translate($x - $addWidth - $offset, $y) rotate($rotate);
+		transform: translate($x - $addWidth - $offset, $y) rotate($rotate);
+	}
+	@if $slide == 'right'{
+		-webkit-transform: translate($x + $addWidth + $offset, $y) rotate($rotate);
+		transform: translate($x + $addWidth + $offset, $y) rotate($rotate);
+	}
+	@if $slide == 'top'{ 
+		-webkit-transform: translate($x, $y - $addHeight - $offset) rotate($rotate);
+		transform: translate($x, $y - $addHeight - $offset) rotate($rotate);
+	}
+	@if $slide == 'bottom'{
+		-webkit-transform: translate($x, $y + $addHeight  + $offset) rotate($rotate);
+		transform: translate($x, $y + $addHeight  + $offset) rotate($rotate);
+	}
+	@if $slide == ''{
+		-webkit-transform: translate($x, $y);
+		transform: translate($x, $y); 
+	} 
+
+	@if $slide != ''{
+		&.active{
+			-webkit-transform: translate($x, $y);
+			transform: translate($x, $y);
+		} 
+	}  
+}
+@mixin transformRotate($x, $y, $z, $d, $rotate) {
+	-webkit-transform: translate($x, $y) rotate($rotate);
+	transform: translate($x, $y) rotate($rotate);
+
+	&.active{
+		-webkit-transform: translate($z, $d);
+		transform: translate($z, $d);  
+	}
+}
+@mixin anim(
+		$speed: 1s,
+		$delay: 0s, 
+		$loop: infinite, // ilość powtórzeń 1/2/3...infinite
+		$timing: ease, // ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n)
+		$class: 'true', // jeśli true div musi posiadać klasę .animate
+		$centerPoint: '50%',
+		
+		$startX: 0px, 
+		$centerX: 0px, 
+		$endX: 0px, 
+		
+		$startY: 0px, 
+		$centerY: 0px, 
+		$endY: 0px, 
+		
+		$startRotate: 0deg, 
+		$centerRotate: 0deg, 
+		$endRotate: 0deg, 
+
+		$startScale: 1,
+		$centerScale: 1,
+		$endScale: 1,
+		
+		$startOpacity: 1, 
+		$centerOpacity: 1, 
+		$endOpacity: 1
+	){
+	
+
+	$name: unique-id();
+
+	-webkit-animation-duration: $speed;
+	animation-duration: $speed;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+
+	-webkit-animation-delay: $delay;
+    animation-delay: $delay;
+
+    -webkit-animation-timing-function: $timing;
+    animation-timing-function: $timing;
+
+	-webkit-animation-iteration-count: $loop;
+	animation-iteration-count: $loop;
+	
+	@if $class == 'false'{
+		-webkit-animation-name: $name;
+		animation-name: $name;
+	}
+
+	&.animate{
+		-webkit-animation-name: $name;
+		animation-name: $name;
+	}
+
+	@-webkit-keyframes #{$name} {
+		from {
+			transform: translate($startX, $startY) rotate($startRotate) scale($startScale);
+			-webkit-transform: translate($startX, $startY) rotate($startRotate) scale($startScale);
+			opacity: $startOpacity;
+		}
+
+		50% {
+			transform: translate($centerX, $centerY) rotate($centerRotate) scale($centerScale);
+			-webkit-transform: translate($centerX, $centerY) rotate($centerRotate) scale($centerScale); 
+			opacity: $centerOpacity;
+		}
+
+		to {
+			transform: translate($endX, $endY) rotate($endRotate) scale($endScale);
+			-webkit-transform: translate($endX, $endY) rotate($endRotate) scale($endScale); 
+			opacity: $endOpacity;
+		}
+	}
+	@keyframes #{$name} {
+		from {
+			transform: translate($startX, $startY) rotate($startRotate) scale($startScale);
+			-webkit-transform: translate($startX, $startY) rotate($startRotate) scale($startScale);
+			opacity: $startOpacity;
+		}
+
+		50% {
+			transform: translate($centerX, $centerY) rotate($centerRotate) scale($centerScale);
+			-webkit-transform: translate($centerX, $centerY) rotate($centerRotate) scale($centerScale);
+			opacity: $centerOpacity;
+		}
+
+		to {
+			transform: translate($endX, $endY) rotate($endRotate) scale($endScale);
+			-webkit-transform: translate($endX, $endY) rotate($endRotate) scale($endScale); 
+			opacity: $endOpacity;
+		}
+	}
+}

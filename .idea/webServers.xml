@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="dabcc84f-bc9d-4152-a8e5-178bf737c72d" name="robot-arm">
+        <fileTransfer rootFolder="/home/ubuntu/containers/docker-compose-lamp/www" accessType="SFTP" host="130.61.34.28" port="22" sshConfigId="15b49938-b225-4197-bff8-469d0fdf269e" sshConfig="robot-arm" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

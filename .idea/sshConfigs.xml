@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="OPEN_SSH" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="130.61.34.28" id="15b49938-b225-4197-bff8-469d0fdf269e" port="22" customName="robot-arm" nameFormat="CUSTOM" username="ubuntu" useOpenSSHConfig="true">
+        <option name="customName" value="robot-arm" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

@@ -1,0 +1,16 @@
+$addWidth: 	970px;
+$addHeight: 600px;
+$bgcolor:	#be4b95;
+
+@import '_mixins';
+@import '_main';
+
+.nota-btn	{ @include rb(9,9); }
+.btn 		{ @include lb(40,22); }
+#head 		{ @include lt(40,95);	@include transform(  'top'		); img {width:550px;}}
+#scene1-ct	{ @include scale(85); }
+#scene1		{ @include lt(385,170);	@include transform(  'bottom'	); }
+#scene2-ct	{ @include scale(90); }
+#scene2		{ @include lt(565,215); }
+//#kv			{ @include lt(60,60);	@include transform(  'top'		);}
+#benefit	{ @include lt(40,95);	@include transform(  'bottom'	); img {width:450px;}}
